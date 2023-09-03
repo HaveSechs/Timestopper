@@ -43,7 +43,7 @@ class Store {
         
         frame.innerHTML = `<h1>Store</h1>`;
 
-        const res = await fetch("/apps.json");
+        const res = await fetch("apps.json");
         const data = await res.json();
 
         
