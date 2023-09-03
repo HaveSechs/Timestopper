@@ -1,0 +1,23 @@
+{
+    "apps": [
+        {
+            "name": "Ultraviolet",
+            "desc": "Epik procksee",
+            "manifest": {
+                "url": "uv.js",
+                "name": "Ultraviolet",
+                "icon": "assets/images/uv.png"
+            }
+        },
+
+        {
+            "name": "Interstellar",
+            "desc": "Epik procksee",
+            "manifest": {
+                "url": "is.js",
+                "name": "Interstellar",
+                "icon": "assets/images/is.png"
+            }
+        }
+    ]
+}
