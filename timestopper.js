@@ -10,8 +10,8 @@ export async function check_localstorage () {
 
     if (localStorage.apps === undefined) {
         localStorage.apps = JSON.stringify([
-            {url: "settings.js", name: "Settings", icon: "assets/images/settings.png"},
-            {url: "store.js", name: "Store", icon: "assets/images/store.png"}
+            {url: "apps/settings.js", name: "Settings", icon: "assets/images/settings.png"},
+            {url: "apps/store.js", name: "Store", icon: "assets/images/store.png"}
         ]);
     }
 
@@ -68,11 +68,12 @@ export async function load () {
     
             console.log(a);
             
-            document.head.appendChild(app);
             document.getElementById("bar").innerHTML += `<button id="${app.src.substring(app.src.lastIndexOf('/') + 1).split('.js')[0]}Button">
         <img src="${apps[a].icon}" height=50px>
     </button>`
         } catch {}
+
+        document.head.appendChild(app);
     }
 }
 

@@ -52,7 +52,9 @@ class Settings {
         frame.innerHTML = `<h1>Settings</h1>
 <h2>Cloaking</h2>
 Title: <input id="title"><button id="tc">Change</button><br>
-Favicon: <input type='file' id="fav"><br>
+Favicon: <input type='file' id="fav"><br><br>
+<button id="pop">Open popup</button>
+<button id="new">Open tab</button>
 <h2>Theme</h2>
 Background Image: <input type='file' id="newImage"><br>
 Background Color: <input id="hex"><button id="color">Change</button><br>
@@ -66,11 +68,22 @@ Background Color: <input id="hex"><button id="color">Change</button><br>
         const color = document.getElementById("color");
         const installed = document.getElementById("installedApps");
         const reset = document.getElementById("lsc");
+        const pup = document.getElementById("pop");
+        const tab = document.getElementById("new");
 
         reset.style.color = "white";
         reset.style.backgroundColor = "red";
         
         const apps = JSON.parse(localStorage.apps);
+
+        pup.addEventListener("click", function () {
+            var win = window.open("","_blank","popup=yes"); win.document.write(`<!DOCTYPE html> <html> <body> <iframe src="${atob('aHR0cHM6Ly90aW1lc3RvcHBlci5zYWNoc3RoZWJhc2VkLnJlcGwuY28v')}"></iframe> <style>* {margin: 0;padding: 0;overflow-y: hidden;}iframe {width: 100%;height: 100vh;border: none;}</style> </body> </html>`);
+        })
+
+        tab.addEventListener("click", function () {
+            var win = window.open("","_blank","popup=no"); win.document.write(`<!DOCTYPE html> <html> <body> <iframe src="${atob('aHR0cHM6Ly90aW1lc3RvcHBlci5zYWNoc3RoZWJhc2VkLnJlcGwuY28v')}"></iframe> <style>* {margin: 0;padding: 0;overflow-y: hidden;}iframe {width: 100%;height: 100vh;border: none;}</style> </body> </html>`);
+        })
+        
         image.addEventListener("change",  function (event) {
             var background = image.files[0];
 

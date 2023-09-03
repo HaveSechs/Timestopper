@@ -4,7 +4,7 @@
             "name": "Ultraviolet",
             "desc": "Epik procksee",
             "manifest": {
-                "url": "uv.js",
+                "url": "apps/uv.js",
                 "name": "Ultraviolet",
                 "icon": "assets/images/uv.png"
             }
@@ -14,9 +14,19 @@
             "name": "Interstellar",
             "desc": "Epik procksee",
             "manifest": {
-                "url": "is.js",
+                "url": "apps/is.js",
                 "name": "Interstellar",
                 "icon": "assets/images/is.png"
+            }
+        },
+
+        {
+            "name": "Rammerhead",
+            "desc": "googole but beder",
+            "manifest": {
+                "url": "apps/rh.js",
+                "name": "Rammerhead",
+                "icon": "assets/images/rh.png"
             }
         }
     ]
