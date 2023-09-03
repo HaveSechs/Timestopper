@@ -23,7 +23,6 @@ class Settings {
             // o(n^3) lmao
             for (let e = 0; e < this.elems.length; e++) {
                 for (let t = 0; t < evens.length; t++) {
-                    console.log(`${t}..${e}`)
                     try {
                         const stalkers = getEventListeners(this.elems[e], evens[t]);
     
@@ -53,7 +52,7 @@ class Settings {
 <h2>Cloaking</h2>
 Title: <input id="title"><button id="tc">Change</button><br>
 Favicon: <input type='file' id="fav"><br><br>
-<button id="pop">Open popup</button>
+<button id="pop">Open popup</button><br>
 <button id="new">Open tab</button>
 <h2>Theme</h2>
 Background Image: <input type='file' id="newImage"><br>
@@ -131,17 +130,19 @@ Background Color: <input id="hex"><button id="color">Change</button><br>
     Delete ${apps[a].name}
 </button>`
             const x = document.getElementById(`app-x-${a}`);
-            this.elems.push(`apps-x-${a}`);
+            this.elems.push(`app-x-${a}`);
             x.style.color = "white";
             x.style.backgroundColor = "red";
             x.style.width = document.getElementById(`app-${a}`).offsetWidth;
-    
-            x.addEventListener("click", function (event) {
-                delete_app(a);
-            })
-
-            // await load();
         }
+
+        frame.addEventListener("click", async function(event) {
+            if (event.target.tagName === "BUTTON" && event.target.id.startsWith("app-x-")) {
+                var index = parseInt(event.target.id.split('-')[2]);
+                await delete_app(index);
+                location.reload();
+            }
+        });
     }
 }
 

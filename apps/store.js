@@ -48,13 +48,16 @@ class Store {
 
         
         for (let i = 0; i < data.apps.length; i++) {
-            frame.innerHTML += `<button id="app-${i}"><img src="${data.apps[i].manifest.icon}" height=75px><br><b>${data.apps[i].name}</b><br>${data.apps[i].desc}</button>`;
+            frame.innerHTML += `<button id="app-${i}"><img id="app-lg-${i}" src="${data.apps[i].manifest.icon}" height=75px><br><b id="app-b-${i}">${data.apps[i].name}</b><br>${data.apps[i].desc}</button>`;
             this.elems.push(`app-${i}`);
         }
         
         frame.addEventListener("click", async function(event) {
-            if (event.target.tagName === "BUTTON") {
-                const index = parseInt(event.target.id.split('-')[1]);
+            if (event.target.tagName === "BUTTON" || event.target.tagName === "IMG" || event.target.tagName === "B") {
+                var index = parseInt(event.target.id.split('-')[1]);
+                if (isNaN(index)) {
+                    index = parseInt(event.target.id.split('-')[2]);
+                }
                 await download_app(data.apps[index].manifest);
                 location.reload();
             }
