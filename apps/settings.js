@@ -1,4 +1,4 @@
-import { delete_app, set_background, load } from "../timestopper.js"
+import { delete_app, set_background, load, set_favicon } from "../timestopper.js"
 
 // example app (settings)
 class Settings {
@@ -69,6 +69,7 @@ Background Color: <input id="hex"><button id="color">Change</button><br>
         const reset = document.getElementById("lsc");
         const pup = document.getElementById("pop");
         const tab = document.getElementById("new");
+        const fav = document.getElementById("fav");
 
         reset.style.color = "white";
         reset.style.backgroundColor = "red";
@@ -93,6 +94,19 @@ Background Color: <input id="hex"><button id="color">Change</button><br>
                 localStorage.backgroundImage = b64;
                 localStorage.backgroundColor = "";
                 await set_background();
+            };
+            reader.readAsDataURL(background);
+        })
+
+        fav.addEventListener("change",  function (event) {
+            var background = fav.files[0];
+
+            const reader = new FileReader();
+
+            reader.onload = async function(event) {
+                const b64 = event.target.result;
+                localStorage.fav = b64;
+                await set_favicon();
             };
             reader.readAsDataURL(background);
         })

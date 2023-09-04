@@ -34,9 +34,9 @@
             "name": "ChatGPT",
             "desc": "googole but smarder",
             "manifest": {
-                "url": "apps/gpt.js",
+                "url": "apps/cgpt.js",
                 "name": "ChatGPT",
-                "icon": "assets/images/gpt.png"
+                "icon": "assets/images/cgpt.png"
             }
         }
     ]

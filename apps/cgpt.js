@@ -1,5 +1,5 @@
 // https://www.gpt-ua.click/
-class GPT {
+class CGPT {
     constructor () {
         this.open_ = false;
     }
@@ -20,6 +20,6 @@ class GPT {
     }
 }
 
-const gpt = new GPT();
-const gptB = document.getElementById("gptButton");
-gptB.addEventListener("click", function (event) { gpt.manager() });
+const cgpt = new CGPT();
+const cgptB = document.getElementById("cgptButton");
+cgptB.addEventListener("click", function (event) { cgpt.manager() });

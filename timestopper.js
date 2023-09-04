@@ -1,3 +1,5 @@
+// my ego is so big now
+
 // checks everything is there for lc
 export async function check_localstorage () {
     if (localStorage.backgroundImage === undefined) {
@@ -18,6 +20,10 @@ export async function check_localstorage () {
     if (localStorage.title === undefined) {
         localStorage.title = "Timestopper \"OS\""
     }
+
+    if (localStorage.fav === undefined) {
+        localStorage.fav = "";
+    }
 }
 
 // sets background
@@ -31,6 +37,19 @@ export async function set_background () {
         document.body.style.backgroundImage = `url('${image}')`;
         document.body.style.backgroundSize = "cover";
     }
+}
+
+export async function set_favicon () {
+    const newFavicon = document.createElement('link');
+    newFavicon.rel = 'icon';
+    newFavicon.href = localStorage.fav;
+
+    const oldFavicon = document.querySelector('link[rel="icon"]');
+    if (oldFavicon) {
+        document.head.removeChild(oldFavicon);
+    }
+
+    document.head.appendChild(newFavicon);
 }
 
 // loads new app
@@ -53,6 +72,7 @@ export async function delete_app (index) {
 export async function load () {
     await check_localstorage();
     await set_background();
+    await set_favicon();
     document.title = localStorage.title;
 
     document.getElementById("bar").innerHTML = "";
@@ -65,8 +85,6 @@ export async function load () {
             app.defer = true;
             app.type = "module";
             app.src = apps[a].url;
-    
-            console.log(a);
             
             document.getElementById("bar").innerHTML += `<button id="${app.src.substring(app.src.lastIndexOf('/') + 1).split('.js')[0]}Button">
         <img src="${apps[a].icon}" height=50px>
